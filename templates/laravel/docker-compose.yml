@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  major-app:
+  <name>-app:
     build:
       context: ./
       dockerfile: Dockerfile-laravel
-    container_name: major-app
+    container_name: <name>-app
     ports:
       - "8000:8000"
     volumes:
