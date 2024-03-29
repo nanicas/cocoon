@@ -2,12 +2,20 @@
 FROM php:8.2
 
 # Atualizar e instalar pacotes necessários
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
     libzip-dev \
     unzip \
     git \
-    && docker-php-ext-install pdo_mysql zip
+    npm
+
+# Instalar o npm
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
+# Instalar extensões
+RUN docker-php-ext-install pdo_mysql zip
 
 # Instalar Composer globalmente
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

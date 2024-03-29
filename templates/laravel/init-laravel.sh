@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Verificar se o Laravel já está instalado
-if [ ! -f "/var/www/html/init_laravel.lock" ]; then
+if [ ! -f "/var/www/html/init-laravel.lock" ]; then
     # Criar um diretório temporário
     temp_dir=$(mktemp -d)
 
@@ -18,7 +18,7 @@ if [ ! -f "/var/www/html/init_laravel.lock" ]; then
     rm -rf $temp_dir
 
     # Criar o arquivo de travamento
-    touch /var/www/html/init_laravel.lock
+    touch /var/www/html/init-laravel.lock
 fi
 
 # Executar o servidor de desenvolvimento do Laravel
