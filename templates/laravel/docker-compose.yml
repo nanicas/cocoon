@@ -18,4 +18,4 @@ services:
 networks:
   database-network-nanicas:
     external: true
-    name: database_database-network-nanicas
+    name: database-mysql_database-network-nanicas

@@ -24,13 +24,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /var/www/html
 
 # Copiar o script de inicialização do Laravel
-COPY init-laravel.sh /tmp/init-laravel.sh
+COPY init-laravel.sh /var/www/html/init-laravel.sh
 
-# Dar permissão de execução ao script
-RUN chmod +x /tmp/init-laravel.sh
+# Mudar para usuário root
+USER root
 
-# Expor a porta 8000 para o servidor do Laravel
-EXPOSE 8000
+# Dar permissão de execução ao arquivo
+RUN chmod +x /var/www/html/init-laravel.sh
 
 # Executar o script de inicialização do Laravel
 CMD ["/var/www/html/init-laravel.sh"]
