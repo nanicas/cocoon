@@ -21,5 +21,22 @@ if [ ! -f "/var/www/html/init-laravel.lock" ]; then
     touch /var/www/html/init-laravel.lock
 fi
 
+# Instalar dependências PHP
+composer install
+
+# Instalar dependências NPM
+npm install
+
+if [ ! -f "/var/www/html/.env" ]; then
+    # Gerar o arquivo .env
+    composer run post-root-package-install
+
+    # Configurar o Laravel
+    composer run post-create-project-cmd
+
+    # Criar o link simbólico para o armazenamento
+    php artisan storage:link
+fi
+
 # Executar o servidor de desenvolvimento do Laravel
 php artisan serve --host=0.0.0.0 --port=8000
