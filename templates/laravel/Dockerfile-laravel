@@ -26,6 +26,9 @@ WORKDIR /var/www/html
 # Copiar o script de inicialização do Laravel
 COPY init-laravel.sh /var/www/html/init-laravel.sh
 
+# Remover caracteres de quebra de linha do script (Windows)
+RUN sed -i 's/\r$//' /var/www/html/init-laravel.sh
+
 # Mudar para usuário root
 USER root
 
@@ -33,4 +36,4 @@ USER root
 RUN chmod +x /var/www/html/init-laravel.sh
 
 # Executar o script de inicialização do Laravel
-CMD ["/var/www/html/init-laravel.sh"]
+CMD ["sh", "/var/www/html/init-laravel.sh"]

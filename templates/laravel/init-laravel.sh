@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Verificar se o Laravel já está instalado
 if [ ! -f "/var/www/html/init-laravel.lock" ]; then
